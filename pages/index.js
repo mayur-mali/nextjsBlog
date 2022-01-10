@@ -1,7 +1,7 @@
 import { data } from "autoprefixer";
-import Head from "next/head";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import FeatureBlogSection from "../components/FeatureBlogSection";
+import Skelaton from "../components/Skelaton";
 
 export const getStaticProps = async () => {
   const res = await fetch(
@@ -16,26 +16,46 @@ export const getStaticProps = async () => {
   };
 };
 export default function Home({ data }) {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    const interval = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(interval);
+  }, [data]);
   return (
-    <div className="mt-4">
+    <div className="mt-4 py-10">
       <h2 className="text-3xl max-w-5xl px-8 mx-auto text-white underline underline-offset-2 decoration-blue-700">
         Featured posts
       </h2>
-      {data.map((post, index) => {
-        return (
-          <FeatureBlogSection
-            key={index}
-            title={post.title}
-            category={post.category}
-            content={post.content}
-            time={post.createdAt}
-            authorfirstName={post.authorfirstName}
-            authorlastName={post.authorlastName}
-            id={post.id}
-            img={post.img}
-          />
-        );
-      })}
+
+      {loading && (
+        <>
+          {data.map((post, index) => {
+            return <Skelaton key={index} />;
+          })}
+        </>
+      )}
+      {!loading && (
+        <>
+          {data.map((post, index) => {
+            return (
+              <FeatureBlogSection
+                key={index}
+                title={post.title}
+                category={post.category}
+                content={post.content}
+                time={post.createdAt}
+                authorfirstName={post.authorfirstName}
+                authorlastName={post.authorlastName}
+                id={post.id}
+                img={post.img}
+              />
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }

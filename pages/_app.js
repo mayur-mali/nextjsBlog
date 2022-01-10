@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import defautLayout from "../layouts/defautLayout";
 import loginLayout from "../layouts/loginLayout";
 import "../styles/globals.css";
+import Spinner from "../components/Spinner";
 
 const layouts = {
   L1: defautLayout,
@@ -8,11 +10,23 @@ const layouts = {
 };
 
 function MyApp({ Component, pageProps }) {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   const Layout = layouts[Component.layout] || ((children) => <>{children}</>);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      {loading && <Spinner />}
+      {!loading && (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
+    </>
   );
 }
 
