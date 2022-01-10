@@ -35,10 +35,11 @@ export const getStaticProps = async (context) => {
 };
 
 export default function blog({ data }) {
-  const { title, content, time, img } = data;
+  const { title, content, createdAt, img, authorfirstName, authorlastName } =
+    data;
   return (
     <div>
-      <div className="h-20 mx-auto flex items-center px-4 max-w-7xl w-full">
+      <div className="h-20 mx-auto flex items-center md:px-4 px-8 max-w-7xl w-full">
         <Link href="/">
           <a>
             <svg
@@ -58,7 +59,7 @@ export default function blog({ data }) {
           </a>
         </Link>
       </div>
-      <div className="max-w-7xl space-y-8 font-workSans mx-auto">
+      <div className="max-w-7xl md:px-4 px-8 space-y-8 h-auto py-4 font-workSans mx-auto">
         <div className="max-w-7xl h-72 relative">
           {img ? (
             <Image
@@ -77,6 +78,13 @@ export default function blog({ data }) {
           title : {title}
         </h1>
         <p className="text-white text-xl">{content}</p>
+        <div className="flex justify-between my-6 items-center">
+          <p className="text-gray-300 sm:text-sm text-xs">{createdAt}</p>
+          <p className="text-gray-300 space-x-3 sm:text-sm text-xs">
+            @ <span>{authorfirstName}</span>
+            <span>{authorlastName}</span>
+          </p>
+        </div>
       </div>
     </div>
   );

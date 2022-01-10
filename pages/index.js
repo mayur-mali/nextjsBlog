@@ -17,25 +17,23 @@ export const getStaticProps = async () => {
 };
 export default function Home({ data }) {
   return (
-    <div>
+    <div className="mt-4">
       <h2 className="text-3xl max-w-5xl px-8 mx-auto text-white underline underline-offset-2 decoration-blue-700">
         Featured posts
       </h2>
-      {data.map((post) => {
+      {data.map((post, index) => {
         return (
-          <>
-            <FeatureBlogSection
-              key={post.id}
-              title={post.title}
-              category={post.category}
-              content={post.content}
-              time={post.createdAt}
-              authorfirstName={post.authorfirstName}
-              authorlastName={post.authorlastName}
-              id={post.id}
-              img={post.img}
-            />
-          </>
+          <FeatureBlogSection
+            key={index}
+            title={post.title}
+            category={post.category}
+            content={post.content}
+            time={post.createdAt}
+            authorfirstName={post.authorfirstName}
+            authorlastName={post.authorlastName}
+            id={post.id}
+            img={post.img}
+          />
         );
       })}
     </div>

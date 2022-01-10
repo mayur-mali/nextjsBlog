@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SearchBox(props) {
   return (
-    <div className="bg-black bg-opacity-75 fixed  left-0 top-0 w-full h-screen pt-60 ">
+    <div className="bg-black bg-opacity-75 fixed z-30 left-0 top-0 w-full h-screen pt-60 ">
       <span
         className="text-3xl absolute top-10 right-10 text-white text-right mr-10"
         onClick={() => props.searchboxhide(false)}
