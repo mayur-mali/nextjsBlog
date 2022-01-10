@@ -1,13 +1,44 @@
+import { data } from "autoprefixer";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import FeatureBlogSection from "../components/FeatureBlogSection";
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const res = await fetch(
+    "https://615d679b12571a00172075c8.mockapi.io/api/post"
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+export default function Home({ data }) {
   return (
     <div>
-      <h1 className="text-5xl text-red-800 m-10 text-center">
-        welcome to blog app !
-      </h1>
+      <h2 className="text-3xl max-w-5xl px-8 mx-auto text-white underline underline-offset-2 decoration-blue-700">
+        Featured posts
+      </h2>
+      {data.map((post) => {
+        return (
+          <>
+            <FeatureBlogSection
+              key={post.id}
+              title={post.title}
+              category={post.category}
+              content={post.content}
+              time={post.createdAt}
+              authorfirstName={post.authorfirstName}
+              authorlastName={post.authorlastName}
+              id={post.id}
+              img={post.img}
+            />
+          </>
+        );
+      })}
     </div>
   );
 }
+Home.layout = "L1";
