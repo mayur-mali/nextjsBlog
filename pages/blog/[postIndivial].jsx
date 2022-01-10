@@ -22,6 +22,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.postIndivial;
+
   const res = await fetch(
     `https://615d679b12571a00172075c8.mockapi.io/api/post/${id}`
   );
@@ -40,7 +41,7 @@ export default function blog({ data }) {
   return (
     <div>
       <div className="h-20 mx-auto flex items-center md:px-4 px-8 max-w-7xl w-full">
-        <Link href="/">
+        <Link href="/blog">
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,18 +62,12 @@ export default function blog({ data }) {
       </div>
       <div className="max-w-7xl md:px-4 px-8 space-y-8 h-auto py-4 font-workSans mx-auto">
         <div className="max-w-7xl h-72 relative">
-          {img ? (
-            <Image
-              src={img}
-              alt={title}
-              layout="fill"
-              className="absolute object-cover rounded-lg"
-            />
-          ) : (
-            <div className="rounded-lg bg-slate-800 animate-pulse h-72 absolute">
-              hkja
-            </div>
-          )}
+          <Image
+            src={img}
+            alt={title}
+            layout="fill"
+            className="absolute object-cover rounded-lg"
+          />
         </div>
         <h1 className="sm:text-4xl text-2xl capitalize text-white">
           title : {title}

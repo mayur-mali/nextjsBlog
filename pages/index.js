@@ -1,62 +1,22 @@
-import { data } from "autoprefixer";
-import { useState, useEffect } from "react";
-import FeatureBlogSection from "../components/FeatureBlogSection";
-import Skelaton from "../components/Skelaton";
+import Link from "next/link";
 
-export const getStaticProps = async () => {
-  const res = await fetch(
-    "https://615d679b12571a00172075c8.mockapi.io/api/post"
-  );
-  const data = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-export default function Home({ data }) {
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    const interval = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(interval);
-  }, [data]);
+export default function Home() {
   return (
-    <div className="mt-4 py-10">
-      <h2 className="text-3xl max-w-5xl px-8 mx-auto text-white underline underline-offset-2 decoration-blue-700">
-        Featured posts
-      </h2>
+    <div className="py-10 flex justify-center items-center bg-zinc-800 h-screen">
+      <div className="space-y-12">
+        <h2 className="text-6xl max-w-5xl font-EbG px-8 mx-auto text-white text-center">
+          Welcome to HRPIPER Blog !
+        </h2>
 
-      {loading && (
-        <>
-          {data.map((post, index) => {
-            return <Skelaton key={index} />;
-          })}
-        </>
-      )}
-      {!loading && (
-        <>
-          {data.map((post, index) => {
-            return (
-              <FeatureBlogSection
-                key={index}
-                title={post.title}
-                category={post.category}
-                content={post.content}
-                time={post.createdAt}
-                authorfirstName={post.authorfirstName}
-                authorlastName={post.authorlastName}
-                id={post.id}
-                img={post.img}
-              />
-            );
-          })}
-        </>
-      )}
+        <div className="text-center h-20 py-4">
+          <Link href="/blog">
+            <a className="px-4 hover:px-6 hover:py-3 transition-all duration-100 hover:text-xl py-2 bg-white rounded-lg text-2xl font-bold font-workSans">
+              Go To Blog !
+            </a>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
-Home.layout = "L1";
+Home.layout = "L3";

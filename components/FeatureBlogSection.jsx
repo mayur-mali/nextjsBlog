@@ -29,7 +29,7 @@ export default function FeatureBlogSection({
             {category}
           </span>
           <div>
-            <Link href={`/${slugify(id)}`}>
+            <Link href={`/blog/${id}`}>
               <a>
                 <h1 className="sm:text-4xl text-2xl hover:underline underline-offset-4 text-white cursor-pointer">
                   {title}

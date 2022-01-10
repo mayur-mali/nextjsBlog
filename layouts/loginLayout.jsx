@@ -3,8 +3,8 @@ import React from "react";
 
 function loginLayout({ children }) {
   return (
-    <div>
-      <div className="h-20 flex items-center px-10 absolute top-0 left-0 w-full">
+    <div className="bg-zinc-800 h-screen">
+      <div className="h-20 flex items-center px-10 bg-zinc-800 absolute top-0 left-0 w-full">
         <Link href="/">
           <a>
             <svg
