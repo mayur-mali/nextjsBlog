@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import { useState, useEffect } from "react";
 import FeatureBlogSection from "../../components/FeatureBlogSection";
 import Skelaton from "../../components/Skelaton";

@@ -14,8 +14,15 @@ Router.onRouteChangeComplete = () => Nprogress.done();
 Router.onRouteChangeError = () => Nprogress.done();
 Nprogress.configure({ showSpinner: false });
 export default function Navbar() {
+  const [isLogging, setisLogging] = useState(false);
   const [searchBox, setsearchBox] = useState(false);
   const [openMenu, setopenMenu] = useState(false);
+  const handleSubmit = () => {
+    setisLogging(true);
+  };
+  const handleLogout = () => {
+    setisLogging(false);
+  };
   return (
     <div className="max-w-7xl w-full mx-auto">
       <Head>
@@ -51,7 +58,7 @@ export default function Navbar() {
           />
         </svg>
         {openMenu ? (
-          <div className="absolute  w-full h-auto z-20 p-4 top-20 left-0">
+          <div className="absolute md:hidden block  w-full h-auto z-20 p-4 top-20 left-0">
             <div className="flex flex-col uppercase items-center py-8 space-y-4 w-full bg-inter-black rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -68,16 +75,38 @@ export default function Navbar() {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <Link href="/login">
-                <a className="text-white px-6 py-2 w-full text-center">
-                  sign in
-                </a>
-              </Link>
-              <Link href="/register">
-                <a className="text-white px-6 py-2 w-full text-center">
-                  register
-                </a>
-              </Link>
+
+              {!isLogging && (
+                <>
+                  <span
+                    onClick={handleSubmit}
+                    className="text-white px-6 py-2 w-full text-center"
+                  >
+                    sign in
+                  </span>
+                  <Link href="/register">
+                    <a className="text-white px-6 py-2 w-full text-center">
+                      register
+                    </a>
+                  </Link>
+                </>
+              )}
+              {isLogging && (
+                <>
+                  <Link href="/createpost">
+                    <a className="text-white px-6 py-2 w-full text-center">
+                      create post
+                    </a>
+                  </Link>
+
+                  <span
+                    className="text-white px-6 py-2 w-full text-center"
+                    onClick={handleLogout}
+                  >
+                    logout
+                  </span>
+                </>
+              )}
             </div>
           </div>
         ) : null}
@@ -97,14 +126,35 @@ export default function Navbar() {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
-          <Link href="/login">
-            <a className="text-white">sign in</a>
-          </Link>
-          <Link href="/register">
-            <a className="text-white bg-green-700 hover:bg-green-600 px-6 py-2 rounded-full">
-              register
-            </a>
-          </Link>
+          {!isLogging && (
+            <>
+              <span
+                onClick={handleSubmit}
+                className="text-white cursor-pointer"
+              >
+                sign in
+              </span>
+              <Link href="/register">
+                <a className="text-white bg-green-700 hover:bg-green-600 px-6 py-2 rounded-full">
+                  register
+                </a>
+              </Link>
+            </>
+          )}
+          {isLogging && (
+            <>
+              <Link href="/createpost">
+                <a className="text-white">create post</a>
+              </Link>
+
+              <span
+                className="text-white bg-green-700 hover:bg-green-600 px-6 py-2 rounded-full"
+                onClick={handleLogout}
+              >
+                logout
+              </span>
+            </>
+          )}
         </div>
       </div>
 

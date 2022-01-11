@@ -7,13 +7,13 @@ export default function Skelaton() {
         <div className="md:w-64  md:h-72 sm:h-96 animate-pulse h-64 rounded-3xl w-full bg-white"></div>
         <div className="md:w-3/4 w-full space-y-5 py-6">
           <div className="bg-indigo-700 py-5 rounded-full animate-pulse w-32"></div>
-          <div className="w-96 bg-white py-5 animate-pulse"></div>
+          <div className="w-full bg-white py-5 animate-pulse"></div>
           <p className=" bg-gray-300 py-1.5 animate-pulse "></p>
           <p className=" bg-gray-300 py-1.5 animate-pulse "></p>
           <p className=" bg-gray-300 py-1.5 animate-pulse "></p>
           <div className="flex justify-between items-center">
             <p className="bg-gray-300 py-1 w-40 animate-pulse"></p>
-            <p className="bg-gray-300 py-1 w-32 animate-pulse"></p>
+            <p className="bg-gray-300 py-1 sm:w-32 w-12 animate-pulse"></p>
           </div>
         </div>
       </div>

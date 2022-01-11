@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         workSans: ['"Work Sans"', "sans-serif"],
         EbG: ['"EB Garamond"', "serif"],
+        poppins: ['"Poppin"', "Arial", "sans-serif"],
       },
     },
   },
