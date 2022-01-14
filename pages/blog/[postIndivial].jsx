@@ -44,7 +44,7 @@ export default function blog({ data }) {
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-white cursor-pointer"
+              className="h-10 w-10 dark:text-white text-black cursor-pointer"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -68,13 +68,15 @@ export default function blog({ data }) {
             className="absolute object-cover rounded-lg"
           />
         </div>
-        <h1 className="sm:text-4xl text-2xl capitalize text-white">
+        <h1 className="sm:text-4xl text-2xl capitalize dark:text-white text-black">
           title : {title}
         </h1>
-        <p className="text-white text-xl">{content}</p>
+        <p className="dark:text-white text-black text-xl">{content}</p>
         <div className="flex justify-between my-6 items-center">
-          <p className="text-gray-300 sm:text-sm text-xs">{createdAt}</p>
-          <p className="text-gray-300 space-x-3 sm:text-sm text-xs">
+          <p className="text-gray-800 dark:text-gray-300 sm:text-sm text-xs">
+            {createdAt}
+          </p>
+          <p className="text-gray-800 dark:text-gray-300 space-x-3 sm:text-sm text-xs">
             @ <span>{authorfirstName}</span>
             <span>{authorlastName}</span>
           </p>

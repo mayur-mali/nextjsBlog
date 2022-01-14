@@ -28,7 +28,7 @@ export default function SearchBox(props) {
             type="text"
             name="search"
             placeholder="search blog........ "
-            className="px-6 py-2 focus:outline-none text-black text-2xl w-full placeholder:capitalize"
+            className="px-6 py-2 focus:outline-none bg-transparent text-black text-2xl w-full placeholder:capitalize"
           />
         </div>
       </div>

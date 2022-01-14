@@ -25,7 +25,7 @@ export default function Home({ data }) {
   }, [data]);
   return (
     <div className="mt-4 py-10">
-      <h2 className="text-3xl max-w-5xl px-8 mx-auto text-white underline underline-offset-2 decoration-blue-700">
+      <h2 className="text-3xl max-w-5xl px-8 mx-auto dark:text-white text-black underline underline-offset-2 decoration-blue-700">
         Featured posts
       </h2>
 

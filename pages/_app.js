@@ -4,6 +4,7 @@ import loginLayout from "../layouts/loginLayout";
 import withoutNavLayout from "../layouts/withoutNavLayout";
 import "../styles/globals.css";
 import Spinner from "../components/Spinner";
+import { ThemeProvider } from "next-themes";
 
 const layouts = {
   L1: defautLayout,
@@ -24,9 +25,11 @@ function MyApp({ Component, pageProps }) {
     <>
       {loading && <Spinner />}
       {!loading && (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ThemeProvider enableSystem={true} attribute="class">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
       )}
     </>
   );

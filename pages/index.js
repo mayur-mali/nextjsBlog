@@ -17,21 +17,8 @@ export default function Home() {
 
         <div className="h-20 sm:max-w-xs w-full flex sm:items-start items-center  mt-8">
           <Link href="/blog">
-            <a className=" transition-all  duration-100 text-xl py-2 text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 sm:h-14 animate-bounce sm:w-14"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 17l-4 4m0 0l-4-4m4 4V3"
-                />
-              </svg>
+            <a className="text-xl py-2 px-4 bg-gray-200 text-black rounded-lg">
+              Go to blog !
             </a>
           </Link>
         </div>

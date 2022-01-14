@@ -12,7 +12,6 @@ export default function FeatureBlogSection({
   authorlastName,
   img,
 }) {
-  var slugify = require("slugify");
   return (
     <div className="max-w-5xl md:px-6 px-8 font-workSans mt-6 w-full mx-auto">
       <Link href={`/blog/${id}`}>
@@ -27,20 +26,20 @@ export default function FeatureBlogSection({
               />
             </div>
             <div className="md:w-3/4 w-full space-y-5 py-6">
-              <span className="text-white bg-indigo-700 py-2 px-5 rounded-full text-sm capitalize">
+              <span className="text-white bg-indigo-700 dark:bg-blue-700 py-2 px-5 rounded-full text-sm capitalize">
                 {category}
               </span>
               <div>
-                <h1 className="sm:text-4xl text-2xl hover:underline underline-offset-4 text-white cursor-pointer">
+                <h1 className="sm:text-4xl text-2xl hover:underline underline-offset-4 dark:text-white text-black cursor-pointer">
                   {title}
                 </h1>
               </div>
-              <p className="line-clamp-3 text-gray-300 sm:text-lg text-sm">
+              <p className="line-clamp-3 dark:text-gray-300 text-gray-700 sm:text-lg text-sm">
                 {content}
               </p>
-              <div className="flex justify-between items-center">
-                <p className="text-gray-300 sm:text-sm text-xs">{time}</p>
-                <p className="text-gray-300 space-x-3 sm:text-sm text-xs">
+              <div className="flex justify-between dark:text-gray-300 text-gray-700 items-center">
+                <p className=" sm:text-sm text-xs">{time}</p>
+                <p className=" space-x-3 sm:text-sm text-xs">
                   @ <span>{authorfirstName}</span>
                   <span>{authorlastName}</span>
                 </p>
